@@ -3,43 +3,43 @@ package br.senai.sp.jandira.model;
 import java.time.LocalDate;
 
 public class PlanoDeSaude {
-	
-	//atributos
+
+	// atributos
 	private String operadora;
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-	
-	//metodos
+
+	// metodos
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
 	}
-	
-	public String getOperadora(){
+
+	public String getOperadora() {
 		return operadora;
 	}
-	
+
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
-	public String getCategoria(){
+
+	public String getCategoria() {
 		return categoria;
 	}
-	
+
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
-	public String getNumero(){
+
+	public String getNumero() {
 		return numero;
 	}
-	
+
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
-	
-	public LocalDate getValidade(){
+
+	public LocalDate getValidade() {
 		return validade;
 	}
 }
