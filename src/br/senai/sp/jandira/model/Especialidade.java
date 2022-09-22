@@ -8,6 +8,19 @@ public class Especialidade {
 	private String nome;
 	private String descricao;
 
+	// Construtor da classe
+	public Especialidade(String nome) {
+		this.nome = nome;
+	}
+
+	public Especialidade(String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
+	public Especialidade() {
+		
+	}
 	// métodos de acesso aos atributos
 	public void setNome(String nome) {
 		if (nome.length() >= 3) {
@@ -34,5 +47,13 @@ public class Especialidade {
 
 	public String getDescricao() {
 		return descricao;
+	}
+	
+	public void gravar() {
+		
+	}
+	
+	public void excluir() {
+		
 	}
 }

@@ -62,12 +62,12 @@ public class AgendaApp {
 		System.out.println("Cidade:" + paciente.getEndereco().getCidade());
 		System.out.println("---------------------------------------------------------");
 		
-		Especialidade especialidade1 = new Especialidade();
-		especialidade1.setNome("Cardiologista");
+		Especialidade especialidade1 = new Especialidade("Cardiologia");
+		//especialidade1.setNome("Cardiologista");
 		especialidade1.setDescricao("Cuida do coração");
 		
-		Especialidade especialidade2 = new Especialidade();
-		especialidade2.setNome("Clinico Geral");
+		Especialidade especialidade2 = new Especialidade("Clinico Geral");
+		//especialidade2.setNome("Clinico Geral");
 		especialidade2.setDescricao("Cuida de tudo um pouco");
 
 		Especialidade especialidade3 = new Especialidade();
@@ -141,6 +141,8 @@ public class AgendaApp {
 		System.out.println("Data:" +agenda2.getDataDaConsulta());
 		System.out.println("Horas: " +agenda2.getHoraDaConsulta());
 		
+		
+		Especialidade xy = new Especialidade(null, null);
 		
 	}
 
