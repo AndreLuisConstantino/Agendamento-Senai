@@ -11,7 +11,7 @@ public class TesteWrapper {
 
 		int a = 5;
 
-		Integer b = 5;
+		Integer b = 5; //wrap = embrulhar, impacotar, envolver.
 
 		Double x = 7.7;
 
@@ -68,9 +68,12 @@ public class TesteWrapper {
 
 		Especialidade nova = especialidades.get(2);
 		System.out.println(nova.getNome());
-		
+		nova.setNome("Ata");
+
 		Especialidade xy = new Especialidade();
 		
+		
+
 	}
 
 }
