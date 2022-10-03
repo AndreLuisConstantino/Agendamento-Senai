@@ -83,7 +83,8 @@ public class AgendaApp {
         especialidade4.setNome("Gastro");
         especialidade4.setDescricao("não deixa ter dor de barriga");
         
-        Especialidade especialidade5 = new Especialidade("Espec 5 ");
+        Especialidade especialidade5 = new Especialidade("Espec 5 "
+                + "");
         
         
         System.out.println();
