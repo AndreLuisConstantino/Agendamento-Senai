@@ -35,7 +35,7 @@ public class EspecialidadeDAO {
             if (e.getCodigo() == especialidadeAtualizada.getCodigo()) {
                 especialidades.set(especialidades.indexOf(e), especialidadeAtualizada);
                 break;
-            }
+            }                                                   
         }
     }
 
@@ -49,4 +49,19 @@ public class EspecialidadeDAO {
         }
     }
 
+    //Criar uma lista inicial de especialidades
+    public static void criarListaDeEspecialidade(){
+        Especialidade e1 = new Especialidade("Cardiologia", "Não deixa ter ataque");
+        Especialidade e2 = new Especialidade("Fisioterapia", "Não deixa ter dor nas costas");
+        Especialidade e3 = new Especialidade("Otorrinolaringologia", "Não deixa doença nos ovido");
+        Especialidade e4 = new Especialidade("Pediatria", "Cuida das criança");
+        
+        especialidades.add(e1);
+        especialidades.add(e2);
+        especialidades.add(e3);
+        especialidades.add(e4);
+        
+    }
+    
+    
 }

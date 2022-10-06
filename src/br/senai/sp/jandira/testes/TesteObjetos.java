@@ -12,6 +12,43 @@ public class TesteObjetos {
 
     public static void main(String[] args) {
 
+        int[] a = {6, 9, 87, 35, 96};
+        int[] b = new int[2];
+        b[0] = 55;
+        b[1] = 44;
+
+        int c[][] = {
+            {4, 5, 7}, {9, 4, 8}, {10, 999, 1000}
+        };
+
+        String[][] quitanda = {
+            {"banana", "maça", "morango", "uva"},
+            {"Alface", "Couve", "Pepino", "Salsinha", "Pimentão"},
+            {"Abacate", "Limão", "Jiló"}
+        };
+
+        System.out.println(quitanda[1][4]);
+
+        System.out.println(c[2][1]);//para imprimir o 999
+        
+        int[][][] testeAvassalador = {
+            {
+                {1,2,3},
+                {3,3,3}
+            },{
+                {4,5,6},
+                {8,9,0}
+            },{
+                {7,8,9},
+                {1,44,4}
+            }
+        };
+
+        System.out.println(testeAvassalador[0][0][0]);//Para imprimir 1
+        
+        
+        System.out.println("************************************************");
+
         Especialidade especialidade1 = new Especialidade("Cardiologia");
         // especialidade1.setNome("Cardiologia");
         especialidade1.setDescricao("Não deixa ter um ataque");
@@ -40,29 +77,24 @@ public class TesteObjetos {
             System.out.println(ee.getNome() + " - " + ee.getCodigo());
         }
         System.out.println("----------------------------------");
-        
+
         System.out.println("----------------------------------");
         Especialidade procurada = EspecialidadeDAO.getEspecialidade(102);
         System.out.println(procurada.getNome());
-        
-        
+
         System.out.println("-------UPDATE--------");
         Especialidade especialidadeAtualizada = new Especialidade();
         especialidadeAtualizada.setCodigo(102);
         especialidadeAtualizada.setNome("Otorrinolaringologia");
         especialidadeAtualizada.setDescricao("Nova descrição");
         EspecialidadeDAO.atualizar(especialidadeAtualizada);
-        
+
         System.out.println("---------------------Novo Resultado------------------");
         for (Especialidade ee : EspecialidadeDAO.getEspecialidades()) {
             System.out.println(ee.getNome() + " - " + ee.getCodigo());
         }
         System.out.println("----------------------------------------------");
-        
-        
-        
-        
-        
+
         ArrayList<Especialidade> especialidadades = new ArrayList<>();
         especialidadades.add(especialidade1);
         especialidadades.add(especialidade2);
