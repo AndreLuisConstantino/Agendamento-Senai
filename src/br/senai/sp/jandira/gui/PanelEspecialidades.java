@@ -5,6 +5,8 @@
 package br.senai.sp.jandira.gui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +22,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
         initComponents();
         EspecialidadeDAO.criarListaDeEspecialidade();
         preencherTabela();
-        
+
     }
 
     /**
@@ -60,6 +62,11 @@ public class PanelEspecialidades extends javax.swing.JPanel {
 
         buttonEspecialidadesExluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancelar (1).png"))); // NOI18N
         buttonEspecialidadesExluir.setToolTipText("Excluir um agendamento");
+        buttonEspecialidadesExluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEspecialidadesExluirActionPerformed(evt);
+            }
+        });
         add(buttonEspecialidadesExluir);
         buttonEspecialidadesExluir.setBounds(610, 180, 50, 40);
 
@@ -89,10 +96,44 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonEspecialidadesEditarActionPerformed
 
     private void buttonEspecialidadesNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesNovoActionPerformed
-        EspecialidadesDialog d = new EspecialidadesDialog(null, true);
-        d.setVisible(true);
+        EspecialidadesDialog especialidadeDialog = new EspecialidadesDialog(null, true);
+        especialidadeDialog.setVisible(true);
+        preencherTabela();
+
     }//GEN-LAST:event_buttonEspecialidadesNovoActionPerformed
 
+    private void buttonEspecialidadesExluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesExluirActionPerformed
+        int linha = tableEspecialidades.getSelectedRow();
+        
+        if(linha != -1){
+            excluirEspecialidade(linha);
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Por favor, selecione a especialidade que você deseja excluir", 
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_buttonEspecialidadesExluirActionPerformed
+
+    private void excluirEspecialidade(int linha){
+                
+        
+        String codigoStr = tableEspecialidades.getValueAt(linha, 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        
+        int resposta = JOptionPane.showConfirmDialog(this, 
+                "Você confirma a exclusão?", 
+                "Atenção", 
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        EspecialidadeDAO.excluir(codigo);
+        
+        preencherTabela();
+
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEspecialidadesEditar;
@@ -105,7 +146,23 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     private void preencherTabela() {
 
         tableEspecialidades.setModel(EspecialidadeDAO.getTabelaEspecialidades());
-        EspecialidadeDAO.criarListaDeEspecialidade();
+        ajustarTabela();
+
+    }
+
+    private void ajustarTabela() {
+
+        //Impedir que o user mecha nas colunas
+        tableEspecialidades.getTableHeader().setReorderingAllowed(false);
+
+        //bloqueiar a edição de células da tabela
+        tableEspecialidades.setDefaultEditor(Object.class, null);
+
+        //definir a largura das colunas
+        tableEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tableEspecialidades.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tableEspecialidades.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tableEspecialidades.getColumnModel().getColumn(2).setPreferredWidth(310);
 
     }
 

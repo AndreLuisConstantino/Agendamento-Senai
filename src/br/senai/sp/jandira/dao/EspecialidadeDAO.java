@@ -77,7 +77,7 @@ public class EspecialidadeDAO {
             int i = especialidades.indexOf(e);
             dados[i][0] = e.getCodigo().toString();
             dados[i][1] = e.getNome();
-            dados[i][1] = e.getDescricao();
+            dados[i][2] = e.getDescricao();
         }
         
         
