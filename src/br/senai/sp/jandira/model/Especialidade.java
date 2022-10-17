@@ -13,22 +13,24 @@ public class Especialidade {
     // Construtor da classe
     public Especialidade(String nome) {
         this.nome = nome;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
     }
 
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
 
     }
 
     public Especialidade() { //Construtor defaut
+        gerarCodigo();
+
+    }
+
+    private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
-
     }
     // métodos de acesso aos atributos
 
@@ -69,6 +71,10 @@ public class Especialidade {
 
     public int getContador() {
         return contador;
+    }
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
