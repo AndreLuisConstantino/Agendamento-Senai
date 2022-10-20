@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.testes;
 
+import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -70,6 +71,7 @@ public class TesteWrapper {
         nova.setNome("Ata");
 
         Especialidade xy = new Especialidade();
+        
 
     }
 

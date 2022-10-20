@@ -12,6 +12,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }
     // Atributos da classe
     PanelEspecialidades panelEspecialidades;
+    PanelPlanoDeSaude panelPlanoDeSaude;
 
     //Constantes da classe
     private final int POS_X = 30;
@@ -187,6 +188,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
+        panelPlanoDeSaude.setVisible(false);
 
     }//GEN-LAST:event_buttonsEspecialidadesActionPerformed
 
@@ -203,7 +205,9 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPacientesActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
-        // TODO add your handling code here:
+        panelPlanoDeSaude.setVisible(true);
+        panelHome.setVisible(false);
+        panelEspecialidades.setVisible(false);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
@@ -242,6 +246,17 @@ public class HomeFrame extends javax.swing.JFrame {
                 ALTURA);
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
+        
+        panelPlanoDeSaude = new PanelPlanoDeSaude();
+        panelPlanoDeSaude.setBounds(
+        POS_X,
+        POS_Y,
+        LARGURA,
+        ALTURA);
+        getContentPane().add(panelPlanoDeSaude);
+        panelPlanoDeSaude.setVisible(true);
     }
 
+    
+    
 }

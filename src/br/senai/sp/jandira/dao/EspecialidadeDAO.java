@@ -36,7 +36,7 @@ public class EspecialidadeDAO {
             if (e.getCodigo() == especialidadeAtualizada.getCodigo()) {
                 especialidades.set(especialidades.indexOf(e), especialidadeAtualizada);
                 break;
-            }                                                   
+            }
         }
     }
 
@@ -51,44 +51,34 @@ public class EspecialidadeDAO {
     }
 
     //Criar uma lista inicial de especialidades
-    public static void criarListaDeEspecialidade(){
+    public static void criarListaDeEspecialidade() {
         Especialidade e1 = new Especialidade("Cardiologia", "Não deixa ter ataque");
         Especialidade e2 = new Especialidade("Fisioterapia", "Não deixa ter dor nas costas");
         Especialidade e3 = new Especialidade("Otorrinolaringologia", "Não deixa doença nos ovido");
         Especialidade e4 = new Especialidade("Pediatria", "Cuida das criança");
-        
+
         especialidades.add(e1);
         especialidades.add(e2);
         especialidades.add(e3);
         especialidades.add(e4);
-        
-           
+
     }
-    
+
     public static DefaultTableModel getTabelaEspecialidades() {
-        System.out.println("Teste defautTable:"+ especialidades.size());
-        
-        
+        System.out.println("Teste defautTable:" + especialidades.size());
+
         String[] titulo = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
         String[][] dados = new String[especialidades.size()][3];
-        
-        
-        for(Especialidade e : especialidades){
+
+        for (Especialidade e : especialidades) {
             int i = especialidades.indexOf(e);
             dados[i][0] = e.getCodigo().toString();
             dados[i][1] = e.getNome();
-            dados[i][2] = e.getDescricao();
+            dados[i][2] = e.getDescricao().toString();
         }
-        
-        
-        
-       return new DefaultTableModel(dados, titulo);
-    
+
+        return new DefaultTableModel(dados, titulo);
+
     }
-    
-    
-    
-    
-    
-    
+
 }

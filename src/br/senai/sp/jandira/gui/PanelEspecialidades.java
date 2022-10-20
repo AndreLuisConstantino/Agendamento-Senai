@@ -6,6 +6,7 @@ package br.senai.sp.jandira.gui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -112,7 +113,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
         
         EspecialidadesDialog especialidadeDialog = new EspecialidadesDialog(null, 
                 true, 
-                especialidade);
+                especialidade, OperacaoEnum.EDITAR);
         
         especialidadeDialog.setVisible(true);
         preencherTabela();
@@ -121,7 +122,8 @@ public class PanelEspecialidades extends javax.swing.JPanel {
 
 
     private void buttonEspecialidadesNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesNovoActionPerformed
-        EspecialidadesDialog especialidadeDialog = new EspecialidadesDialog(null, true);
+        EspecialidadesDialog especialidadeDialog =
+                new EspecialidadesDialog(null, true, OperacaoEnum.ADICIONAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
 

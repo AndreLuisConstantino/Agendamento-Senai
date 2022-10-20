@@ -30,23 +30,22 @@ public class TesteObjetos {
         System.out.println(quitanda[1][4]);
 
         System.out.println(c[2][1]);//para imprimir o 999
-        
+
         int[][][] testeAvassalador = {
             {
-                {1,2,3},
-                {3,3,3}
-            },{
-                {4,5,6},
-                {8,9,0}
-            },{
-                {7,8,9},
-                {1,44,4}
+                {1, 2, 3},
+                {3, 3, 3}
+            }, {
+                {4, 5, 6},
+                {8, 9, 0}
+            }, {
+                {7, 8, 9},
+                {1, 44, 4}
             }
         };
 
         System.out.println(testeAvassalador[0][0][0]);//Para imprimir 1
-        
-        
+
         System.out.println("************************************************");
 
         Especialidade especialidade1 = new Especialidade("Cardiologia");
@@ -125,7 +124,7 @@ public class TesteObjetos {
         // um deles
         ArrayList<PlanoDeSaude> planos = new ArrayList<>();
 
-        PlanoDeSaude plano1 = new PlanoDeSaude("Operadora de rico");
+
 
         PlanoDeSaude plano2 = new PlanoDeSaude();
         plano2.setOperadora("Operadora de pobre");
@@ -133,7 +132,7 @@ public class TesteObjetos {
         PlanoDeSaude plano3 = new PlanoDeSaude();
         plano3.setOperadora("Operadora de classe média");
 
-        planos.add(plano1);
+
         planos.add(plano2);
         planos.add(plano3);
 
@@ -147,6 +146,9 @@ public class TesteObjetos {
 
         AgendaApp.main(args);
         System.out.println("--------" + PlanoDeSaude.getQuantidade());
+
+        
+        
 
     }
 
