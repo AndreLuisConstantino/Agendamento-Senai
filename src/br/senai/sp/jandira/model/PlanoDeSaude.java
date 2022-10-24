@@ -10,7 +10,7 @@ public class PlanoDeSaude {
     private String numero;
     private LocalDate validade;
     private Integer codigo;
-    private static int quantidade = 99;
+    private static int contador = 100;
 
     //metodos construtores
     public PlanoDeSaude(String operadora, String numero, String categoria, LocalDate validade) {
@@ -59,13 +59,9 @@ public class PlanoDeSaude {
         return validade;
     }
 
-    public static int getQuantidade() {
-        return quantidade;
-    }
-
     private void gerarCodigo() {
-        this.quantidade++;
-        this.codigo = quantidade;
+        this.contador++;
+        this.codigo = contador;
     }
 
     public Integer getCodigo() {

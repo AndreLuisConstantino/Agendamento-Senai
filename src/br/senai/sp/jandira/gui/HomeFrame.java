@@ -178,8 +178,9 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
-        panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
+        panelEspecialidades.setVisible(false);
+        panelPlanoDeSaude.setVisible(false);
 
 
     }//GEN-LAST:event_buttonHomeActionPerformed
@@ -246,17 +247,15 @@ public class HomeFrame extends javax.swing.JFrame {
                 ALTURA);
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
-        
+
         panelPlanoDeSaude = new PanelPlanoDeSaude();
         panelPlanoDeSaude.setBounds(
-        POS_X,
-        POS_Y,
-        LARGURA,
-        ALTURA);
+                POS_X,
+                POS_Y,
+                LARGURA,
+                ALTURA);
         getContentPane().add(panelPlanoDeSaude);
-        panelPlanoDeSaude.setVisible(true);
+        panelPlanoDeSaude.setVisible(false);
     }
 
-    
-    
 }
