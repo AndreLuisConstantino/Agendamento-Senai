@@ -11,10 +11,11 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
 
     private PlanoDeSaude plano;
     private OperacaoEnum operacao;
+    private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public PlanoDeSaudeDialog(java.awt.Frame parent,
             boolean modal,
-            OperacaoEnum o) {
+            OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
@@ -22,7 +23,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
 
     public PlanoDeSaudeDialog(java.awt.Frame parent,
             boolean modal,
-            PlanoDeSaude p, OperacaoEnum o) {
+            PlanoDeSaude p, OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
 
@@ -37,10 +38,10 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         textfieldOperadora.setText(plano.getOperadora());
         textfieldNumero.setText(plano.getNumero());
         textfieldCartegoria.setText(plano.getCategoria());
-        textfieldValidade.setText(plano.getValidade().toString());
+        textfieldValidade.setText(plano.getValidade().format(formato));
 
     }
-    
+
     private void preencherTitulo() {
         labelTitulo.setText("Planos - " + operacao);
 
@@ -102,6 +103,12 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         labelOperadora.setText("Operadora:");
         jPanel2.add(labelOperadora);
         labelOperadora.setBounds(30, 90, 80, 16);
+
+        textfieldOperadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfieldOperadoraActionPerformed(evt);
+            }
+        });
         jPanel2.add(textfieldOperadora);
         textfieldOperadora.setBounds(30, 110, 220, 22);
 
@@ -133,6 +140,11 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         buttonSalvar.setBounds(640, 330, 50, 40);
 
         buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancelar (1).png"))); // NOI18N
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonCancelar);
         buttonCancelar.setBounds(570, 330, 50, 40);
 
@@ -145,17 +157,56 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
 
-        adicionar();
+        if (operacao == OperacaoEnum.ADICIONAR) {
+            adicionar();
+        } else {
+            editar();
+        }
 
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_buttonCancelarActionPerformed
+
+    private void textfieldOperadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldOperadoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfieldOperadoraActionPerformed
+
     private void editar() {
 
+        if (textfieldOperadora.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Não deixe o campo operação vazio!");
+        } else if(textfieldNumero.getText().length() != 9) {
+            JOptionPane.showMessageDialog(this, "O campo deve ter 9 dígitos!");
+        } else if(textfieldCartegoria.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Não deixe o campo categoria vazio!");
+        } else if(textfieldValidade.getText().length() != 10){
+            JOptionPane.showMessageDialog(this, "Veja se a data está correta!");
+        } else {
+        
+        plano.setOperadora(textfieldOperadora.getText());
+        plano.setNumero(textfieldNumero.getText());
+        plano.setCategoria(textfieldCartegoria.getText());
+        plano.setValidade(LocalDate.parse(textfieldValidade.getText(), formato));
+
+        JOptionPane.showMessageDialog(null, "Edição concluída!");
+
+        dispose();
+        }
     }
 
     private void adicionar() {
 
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        if (textfieldOperadora.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Não deixe o campo operação vazio!");
+        } else if(textfieldNumero.getText().length() != 9) {
+            JOptionPane.showMessageDialog(this, "O campo deve ter 9 dígitos!");
+        } else if(textfieldCartegoria.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Não deixe o campo categoria vazio!");
+        } else if(textfieldValidade.getText().length() != 10){
+            JOptionPane.showMessageDialog(this, "Veja se a data está correta!");
+        } else {
 
         PlanoDeSaude novoPlano = new PlanoDeSaude();
         novoPlano.setOperadora(textfieldOperadora.getText());
@@ -168,8 +219,11 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
                 "Plano gravado com sucesso!",
                 "Plano",
                 JOptionPane.INFORMATION_MESSAGE);
-
+        
         dispose();
+        }
+        
+        
     }
 
 

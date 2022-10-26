@@ -76,6 +76,11 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
         buttonPlanosEditar.setBounds(670, 180, 50, 40);
 
         buttonPlanosExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancelar (1).png"))); // NOI18N
+        buttonPlanosExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPlanosExcluirActionPerformed(evt);
+            }
+        });
         add(buttonPlanosExcluir);
         buttonPlanosExcluir.setBounds(610, 180, 50, 40);
     }// </editor-fold>//GEN-END:initComponents
@@ -91,13 +96,39 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
         if (getLinha() != -1) {
             editarPlano();
         } else {
-            JOptionPane.showConfirmDialog(this,
-                    "Por favor, selecione a especialidade que você deseja editar",
-                    "Especialidades",
-                    JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                    "Selecione o plano que deseja editar!", 
+                    "EDITAR", 
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_buttonPlanosEditarActionPerformed
 
+    private void buttonPlanosExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanosExcluirActionPerformed
+        if(getLinha() != -1){
+            excluirPlano();
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Por favor, selecione a especialide para excluir!", 
+                    "EXCLUIR", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_buttonPlanosExcluirActionPerformed
+
+    private void excluirPlano(){
+        int resposta = JOptionPane.showConfirmDialog(
+                this, 
+                "Você confirma a exclusão?", 
+                "EXCLUIR", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.INFORMATION_MESSAGE);
+        
+        if(resposta == 0){
+            PlanoDeSaudeDao.excluir(getCodigo());
+            preencherTabela();
+        }
+    }
+    
     private void editarPlano() {
         PlanoDeSaude plano = PlanoDeSaudeDao.getPlano(getCodigo());
 
