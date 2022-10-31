@@ -12,15 +12,15 @@ public class PlanoDeSaudeDao {
     private static ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
 
     //método gravar
-    public static void gravar(PlanoDeSaude p) {
-        planosDeSaude.add(p);
+    public static void gravar(PlanoDeSaude ps) {
+        planosDeSaude.add(ps);
     }
 
     //método atualizar
     public static void atualizar(PlanoDeSaude planoAtualizado) {
-        for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getNumero() == planoAtualizado.getNumero()) {
-                planosDeSaude.set(planosDeSaude.indexOf(p), planoAtualizado);
+        for (PlanoDeSaude ps : planosDeSaude) {
+            if (ps.getNumero() == planoAtualizado.getNumero()) {
+                planosDeSaude.set(planosDeSaude.indexOf(ps), planoAtualizado);
             }
         }
     }
@@ -28,9 +28,9 @@ public class PlanoDeSaudeDao {
     //método excluir
     public static void excluir(Integer codigo) { //delete
 
-        for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getCodigo() == codigo) {
-                planosDeSaude.remove(p);
+        for (PlanoDeSaude ps : planosDeSaude) {
+            if (ps.getCodigo() == codigo) {
+                planosDeSaude.remove(ps);
                 break;
             }
         }
@@ -42,9 +42,9 @@ public class PlanoDeSaudeDao {
     }
 
     public static PlanoDeSaude getPlano(Integer codigo) { //delete
-        for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getCodigo() == codigo) {
-                return p;
+        for (PlanoDeSaude ps : planosDeSaude) {
+            if (ps.getCodigo() == codigo) {
+                return ps;
             }
         }
 
@@ -73,15 +73,15 @@ public class PlanoDeSaudeDao {
         String[] titulo = {"CÓDIGO", "NOME DA OPERADORA", "CATEGORIA", "VALIDADE", "NUMERO"};
         String[][] dados = new String[planosDeSaude.size()][5];
 
-        for (PlanoDeSaude p : planosDeSaude) {
-            int i = planosDeSaude.indexOf(p);
-            dados[i][0] = p.getCodigo().toString();
-            dados[i][1] = p.getOperadora();
-            dados[i][2] = p.getCategoria();
+        for (PlanoDeSaude ps : planosDeSaude) {
+            int i = planosDeSaude.indexOf(ps);
+            dados[i][0] = ps.getCodigo().toString();
+            dados[i][1] = ps.getOperadora();
+            dados[i][2] = ps.getCategoria();
             
             DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            dados[i][3] = p.getValidade().format(formatacao);
-            dados[i][4] = p.getNumero();
+            dados[i][3] = ps.getValidade().format(formatacao);
+            dados[i][4] = ps.getNumero();
         }
 
         return new DefaultTableModel(dados, titulo);
