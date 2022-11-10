@@ -20,7 +20,13 @@ public class Especialidade {
         this.nome = nome;
         this.descricao = descricao;
         gerarCodigo();
-
+    }
+    
+    public Especialidade(String nome, String descricao, Integer codigo) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.codigo = codigo;
+        this.contador = codigo;
     }
 
     public Especialidade() { //Construtor defaut
@@ -75,6 +81,11 @@ public class Especialidade {
 
     public void setVisible(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public String getEspecialidadeSeparadaPorPontoEVirgula() {
+        
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
     }
 
 }
