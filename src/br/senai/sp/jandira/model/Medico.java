@@ -1,51 +1,111 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+
 public class Medico {
 
-	private String nome;
-	private Especialidade[] especialidades;
-	private String telefone;
-	private String email;
-	private String crm;
+    private String nome;
+    private Especialidade[] especialidades;
+    private String telefone;
+    private String email;
+    private String crm;
+    private LocalDate dataDeNascimento;
+    private static int contador = 99;
+    private Integer codigo;
 
-	public String getNome() {
-		return nome;
-	}
+    public Medico(String nome, String telefone, String crm, String email) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.crm = crm;
+        this.email = email;
+        gerarCodigo();
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Medico(String nome, String telefone, String crm, String email, Integer codigo, LocalDate dataDeNascimento) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.crm = crm;
+        this.email = email;
+        this.codigo = codigo;
+        this.contador = codigo;
+        gerarCodigo();
+    }
+    
+    public Medico() {
+        gerarCodigo();
+    }
 
-	public Especialidade[] getEspecialidades() {
-		return especialidades;
-	}
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-	public void setEspecialidades(Especialidade[] especialidades) {
-		this.especialidades = especialidades;
-	}
+    public static int getContador() {
+        return contador;
+    }
 
-	public String getTelefone() {
-		return telefone;
-	}
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
+    }
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public static void setContador(int contador) {
+        Medico.contador = contador;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
 
-	public String getCrm() {
-		return crm;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Especialidade[] getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(Especialidade[] especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public void gerarCodigo() {
+        this.contador++;
+        this.codigo = contador;
+    }
+
+    public String getMedicosSeoaradoPorPontoEVirgula() {
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone;
+    }
 
 }
