@@ -98,7 +98,7 @@ public class PlanoDeSaudeDao {
     public static void excluir(Integer codigo) { //delete
 
         for (PlanoDeSaude ps : planosDeSaude) {
-            if (ps.getCodigo() == codigo) {
+            if (ps.getCodigo().equals(codigo)) {
                 planosDeSaude.remove(ps);
                 break;
             }

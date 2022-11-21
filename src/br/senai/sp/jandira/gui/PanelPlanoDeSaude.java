@@ -34,6 +34,7 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
         buttonPlanosExcluir = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Planos:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14), new java.awt.Color(255, 0, 0))); // NOI18N
+        setDoubleBuffered(false);
         setPreferredSize(new java.awt.Dimension(790, 230));
         setVerifyInputWhenFocusTarget(false);
         setLayout(null);

@@ -39,9 +39,7 @@ public class Medico {
         return codigo;
     }
 
-    public static int getContador() {
-        return contador;
-    }
+
 
     public LocalDate getDataDeNascimento() {
         return dataDeNascimento;
@@ -51,9 +49,7 @@ public class Medico {
         this.codigo = codigo;
     }
 
-    public static void setContador(int contador) {
-        Medico.contador = contador;
-    }
+    
 
     public void setDataDeNascimento(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
