@@ -4,6 +4,7 @@
  */
 package br.senai.sp.jandira.gui;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDao;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
 import br.senai.sp.jandira.model.Medico;
@@ -73,6 +74,11 @@ public class PanelMedicos extends javax.swing.JPanel {
         buttonMedicosNovo.setBounds(730, 180, 50, 40);
 
         buttonMedicosExcuir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancelar (1).png"))); // NOI18N
+        buttonMedicosExcuir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMedicosExcuirActionPerformed(evt);
+            }
+        });
         add(buttonMedicosExcuir);
         buttonMedicosExcuir.setBounds(610, 180, 50, 40);
 
@@ -107,13 +113,38 @@ public class PanelMedicos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_buttonMedicosEditarActionPerformed
 
+    private void buttonMedicosExcuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosExcuirActionPerformed
+        if (getLinha() != -1) {
+            excluirMedico();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Por favor, selecione a especialidade que você deseja excluir",
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonMedicosExcuirActionPerformed
+
+    private void excluirMedico() {
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Você confirma a exclusão?",
+                "Atenção",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (resposta == 0) {
+            MedicoDao.excluir(getCodigo());
+            preencherTabela();
+        }
+    }
+    
     private void editarMedico() {
+        System.out.println("---------------->"+ getCodigo());
         Medico medico = MedicoDao.getMedico(getCodigo());
+        System.out.println("------------------->" + medico);
         
         MedicosDialog medicoDialog = new MedicosDialog(null, 
                 true, 
-                medico, 
-                OperacaoEnum.EDITAR);
+                OperacaoEnum.EDITAR,
+                medico);
         
         medicoDialog.setVisible(true);
         preencherTabela();

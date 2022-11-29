@@ -92,7 +92,7 @@ public class Medico {
         this.crm = crm;
     }
 
-    public void gerarCodigo() {
+    private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
     }

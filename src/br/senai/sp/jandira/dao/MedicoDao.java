@@ -96,7 +96,7 @@ public class MedicoDao {
     
     public static Medico getMedico(Integer codigo) {
         for(Medico m : medicos){
-            if(m.getCodigo().equals(m)){
+            if(m.getCodigo().equals(codigo)){
                 return m;
             }
         }

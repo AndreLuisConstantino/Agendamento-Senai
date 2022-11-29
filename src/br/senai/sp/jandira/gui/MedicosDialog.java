@@ -24,8 +24,8 @@ public class MedicosDialog extends javax.swing.JDialog {
     
     public MedicosDialog(java.awt.Frame parent,
             boolean modal, 
-            Medico m,
-            OperacaoEnum operacao) {
+            OperacaoEnum operacao,
+            Medico m) {
         super(parent, modal);
         initComponents();
         
@@ -231,7 +231,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
     }
     
-    private void preencherFormulario(){  
+    private void preencherFormulario(){ 
         textfieldCodigo.setText(medico.getCodigo().toString());
         textfieldCrm.setText(medico.getCrm());
         textfieldNomeDoMedico.setText(medico.getNome());
