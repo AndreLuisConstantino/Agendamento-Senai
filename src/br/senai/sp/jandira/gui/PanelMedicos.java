@@ -21,6 +21,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
     public PanelMedicos() {
         initComponents();
+        MedicoDao.criarListaDeMedicos();
         preencherTabela();
         ajustarTabela();
     }
@@ -152,10 +153,8 @@ public class PanelMedicos extends javax.swing.JPanel {
 
     private Integer getCodigo() {
         String codigoStr = tableMedicos.getValueAt(getLinha(), 0).toString();
-        
         Integer codigo = Integer.valueOf(codigoStr);
         return codigo;
-
     }
     
 }

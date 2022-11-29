@@ -109,8 +109,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     private void editarEspecialidade() {
 
         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
-        
-        
+       
         EspecialidadesDialog especialidadeDialog = new EspecialidadesDialog(null, 
                 true, 
                 especialidade, OperacaoEnum.EDITAR);

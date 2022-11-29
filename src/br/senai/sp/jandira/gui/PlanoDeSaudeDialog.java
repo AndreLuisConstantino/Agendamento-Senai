@@ -34,6 +34,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
     }
 
     private void preencherFormulario() {
+        
         textfieldCodigo.setText(plano.getCodigo().toString());
         textfieldOperadora.setText(plano.getOperadora());
         textfieldNumero.setText(plano.getNumero());

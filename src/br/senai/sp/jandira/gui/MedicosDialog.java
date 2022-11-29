@@ -19,6 +19,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
+        preencherTitulo();
     }
     
     public MedicosDialog(java.awt.Frame parent,
@@ -29,10 +30,10 @@ public class MedicosDialog extends javax.swing.JDialog {
         initComponents();
         
         
-        this.medico = m;
+        medico = m;
         this.operacao = operacao;
-        preencherTitulo();
         preencherFormulario();
+        preencherTitulo();
     }
 
     
@@ -230,15 +231,13 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
     }
     
-    private void preencherFormulario() {
-        
+    private void preencherFormulario(){  
         textfieldCodigo.setText(medico.getCodigo().toString());
         textfieldCrm.setText(medico.getCrm());
         textfieldNomeDoMedico.setText(medico.getNome());
         textfieldTelefone.setText(medico.getTelefone());
         textfieldEmail.setText(medico.getEmail());
-        textfieldDataDeNascimento.setText(medico.getDataDeNascimento().format(formato));
-        
+        textfieldDataDeNascimento.setText(medico.getDataDeNascimento().format(formato));    
     }
     
     
@@ -276,15 +275,15 @@ public class MedicosDialog extends javax.swing.JDialog {
     private void editar() {
 
         if (textfieldCrm.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo CRM vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo CRM vazio!");
         } else if (textfieldNomeDoMedico.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O nome não pode ficar vazio!!!");
+            JOptionPane.showMessageDialog(null, "O nome não pode ficar vazio!!!");
         } else if (textfieldTelefone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo telefone vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo telefone vazio!");
         } else if (textfieldEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo email vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo email vazio!");
         } else if (textfieldDataDeNascimento.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo data de nascimento não pode ficar vazio!");
+            JOptionPane.showMessageDialog(null, "O campo data de nascimento não pode ficar vazio!");
         } else {
 
             medico.setCrm(textfieldCrm.getText());
@@ -292,7 +291,9 @@ public class MedicosDialog extends javax.swing.JDialog {
             medico.setTelefone(textfieldTelefone.getText());
             medico.setEmail(textfieldEmail.getText());
             medico.setDataDeNascimento(LocalDate.parse(textfieldDataDeNascimento.getText(), formato));
-
+            
+            MedicoDao.atualizar(medico);
+            
             JOptionPane.showMessageDialog(null, "Edição concluída!");
 
             dispose();
@@ -302,15 +303,15 @@ public class MedicosDialog extends javax.swing.JDialog {
     private void adicionar() {
 
         if (textfieldCrm.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo CRM vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo CRM vazio!");
         } else if (textfieldNomeDoMedico.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O nome não pode ficar vazio!!!");
+            JOptionPane.showMessageDialog(null, "O nome não pode ficar vazio!!!");
         } else if (textfieldTelefone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo telefone vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo telefone vazio!");
         } else if (textfieldEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não deixe o campo email vazio!");
+            JOptionPane.showMessageDialog(null, "Não deixe o campo email vazio!");
         } else if (textfieldDataDeNascimento.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo data de nascimento não pode ficar vazio!");
+            JOptionPane.showMessageDialog(null, "O campo data de nascimento não pode ficar vazio!");
         } else {
 
             Medico novoMedico = new Medico();
@@ -318,7 +319,9 @@ public class MedicosDialog extends javax.swing.JDialog {
             novoMedico.setNome(textfieldNomeDoMedico.getText());
             novoMedico.setTelefone(textfieldTelefone.getText());
             novoMedico.setEmail(textfieldEmail.getText());
-            novoMedico.setDataDeNascimento(LocalDate.parse(textfieldDataDeNascimento.getText(), formato));
+            novoMedico.setDataDeNascimento(
+                    LocalDate.parse(textfieldDataDeNascimento.getText(), 
+                            formato));
 
             MedicoDao.gravar(novoMedico);
             JOptionPane.showMessageDialog(this,

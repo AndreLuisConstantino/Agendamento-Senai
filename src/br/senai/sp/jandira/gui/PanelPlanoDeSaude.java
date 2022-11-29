@@ -105,6 +105,7 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonPlanosEditarActionPerformed
 
     private void buttonPlanosExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanosExcluirActionPerformed
+        
         if(getLinha() != -1){
             excluirPlano();
         } else {
