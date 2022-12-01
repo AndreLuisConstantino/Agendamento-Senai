@@ -19,10 +19,12 @@ import javax.swing.table.DefaultTableModel;
 public class MedicoDao {
     
     
-    private final static String URL = "C:\\Users\\22282216\\Java\\Medicos.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282216\\Java\\Medicos-temp.txt";
+    private final static String URL = "C:\\Users\\andre\\Java\\Medicos.txt";
+    private final static String URL_TEMP = "C:\\Users\\andre\\Java\\Medicos-temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
+    
+    
     private static ArrayList<Medico> medicos = new ArrayList<Medico>();
     
     //Metodos crud
