@@ -215,7 +215,8 @@ public class MedicosDialog extends javax.swing.JDialog {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(10, 90, 730, 380);
 
-        setBounds(0, 0, 774, 508);
+        setSize(new java.awt.Dimension(774, 508));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void preencherLista() {
