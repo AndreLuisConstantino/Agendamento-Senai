@@ -1,11 +1,12 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Medico {
 
     private String nome;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidade;
     private String telefone;
     private String email;
     private String crm;
@@ -21,7 +22,14 @@ public class Medico {
         this.email = email;
     }
 
-    public Medico( String crm,String nome, String telefone, LocalDate dataDeNascimento, Integer codigo, String email) {
+    public Medico( 
+            String crm,
+            String nome, 
+            String telefone, 
+            LocalDate dataDeNascimento, 
+            Integer codigo, 
+            String email,
+            ArrayList<Especialidade> especialidade) {
         gerarCodigo();
         this.nome = nome; 
         this.telefone = telefone;
@@ -30,8 +38,10 @@ public class Medico {
         this.codigo = codigo;
         this.contador = codigo;
         this.email = email;
+        this.especialidade = especialidade;
     }
-
+    
+    
     public Medico() {
         gerarCodigo();
     }
@@ -60,12 +70,12 @@ public class Medico {
         this.nome = nome;
     }
 
-    public Especialidade[] getEspecialidades() {
-        return especialidades;
+    public ArrayList<Especialidade> getEspecialidades() {
+        return especialidade;
     }
 
-    public void setEspecialidades(Especialidade[] especialidades) {
-        this.especialidades = especialidades;
+    public void setEspecialidade(ArrayList<Especialidade> especialidade) {
+        this.especialidade = especialidade;
     }
 
     public String getTelefone() {
@@ -97,8 +107,15 @@ public class Medico {
         this.codigo = contador;
     }
 
-    public String getMedicosSeoaradoPorPontoEVirgula() {
-        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" +this.dataDeNascimento;
+    public String getMedicosSeparadoPorPontoEVirgula() {
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" +this.dataDeNascimento + ";" + converteArrayParaString(this.especialidade);
     }
 
+    public String converteArrayParaString(ArrayList<Especialidade> lista){
+        ArrayList<String> codigos = new ArrayList<>();
+        for(Especialidade e: lista){
+            codigos.add(e.getCodigo().toString());
+        }
+        return String.join(";", codigos);
+    }
 }

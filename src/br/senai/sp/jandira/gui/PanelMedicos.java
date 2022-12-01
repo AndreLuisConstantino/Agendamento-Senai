@@ -137,9 +137,8 @@ public class PanelMedicos extends javax.swing.JPanel {
     }
     
     private void editarMedico() {
-        System.out.println("---------------->"+ getCodigo());
+        
         Medico medico = MedicoDao.getMedico(getCodigo());
-        System.out.println("------------------->" + medico);
         
         MedicosDialog medicoDialog = new MedicosDialog(null, 
                 true, 
