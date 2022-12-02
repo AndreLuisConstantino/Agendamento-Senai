@@ -17,8 +17,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
-    private final static String URL = "C:\\Users\\22282216\\Java\\Especialidade.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282216\\Java\\Especialidade-temp.txt";
+//    private final static String URL = "C:\\Users\\22282216\\Java\\Especialidade.txt";
+//    private final static String URL_TEMP = "C:\\Users\\22282216\\Java\\Especialidade-temp.txt";
+    private final static String URL = "C:\\Users\\andre\\Java\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\andre\\Java\\Especialidade-temp.txt";
+
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
@@ -70,25 +73,24 @@ public class EspecialidadeDAO {
                 break;
             }
         }
-        
+
         atualizarArquivo();
     }
 
     public static void excluir(Integer codigo) { //delete
 
         for (Especialidade e : especialidades) {
-                if (e.getCodigo().equals(codigo)) {
-                    especialidades.remove(e);
-                    break;
-                }
-                
+            if (e.getCodigo().equals(codigo)) {
+                especialidades.remove(e);
+                break;
+            }
+
         }
         atualizarArquivo();
     }
-    
-    
+
     private static void atualizarArquivo() {
-        
+
         // PASSO 01 - Criar uma representação dos arquivos que serão manipulados
         File arquivoAtual = new File(URL);
         File arquivoTemp = new File(URL_TEMP);
@@ -105,17 +107,17 @@ public class EspecialidadeDAO {
 
             /* Iterar na lista para adicionar as especialidades
             no arquivo temporario, exeto oregistro que não queremos mais */
-            for(Especialidade e : especialidades){
+            for (Especialidade e : especialidades) {
                 bwTemp.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
                 bwTemp.newLine();
             }
-            
+
             bwTemp.close();
-            
+
             arquivoAtual.delete();
-            
+
             arquivoTemp.renameTo(arquivoAtual);
-            
+
         } catch (Exception error) {
 
             error.printStackTrace();
@@ -123,11 +125,10 @@ public class EspecialidadeDAO {
         }
 
     }
-    
-    
+
     public static DefaultListModel<Especialidade> getListaDeEspecialidades() {
         DefaultListModel<Especialidade> listaDeEspecialidades = new DefaultListModel<>();
-        for (Especialidade i: getEspecialidades()){
+        for (Especialidade i : getEspecialidades()) {
             listaDeEspecialidades.addElement(i);
             listaDeEspecialidades.toString();
         }
@@ -182,7 +183,5 @@ public class EspecialidadeDAO {
         return new DefaultTableModel(dados, titulo);
 
     }
-    
-   
 
 }
